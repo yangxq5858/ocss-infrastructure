@@ -1,0 +1,5 @@
+rootProject.name = 'ecmp-basic'
+include 'basic-entity'
+include 'basic-api'
+//include 'basic-dao'
+include 'basic-service'

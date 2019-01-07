@@ -1,0 +1,34 @@
+apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+// 扩展定义
+ext {
+
+}
+
+war{
+    enabled = true
+    //包名称
+    archiveName "${baseName}.${extension}"
+    //包存放路径
+    destinationDir = file("${rootProject.projectDir}/build/war")
+}
+
+// 依赖
+dependencies {
+    compile project(':basic-api')
+
+    compile (
+            "org.springframework.boot:spring-boot-starter-web",
+            "com.ecmp:cxf-service-ecmp-spring-boot-starter:$ecmp_version",
+            "com.ecmp:notify-api:$notify_version"
+    )
+
+    compile("com.ecmp:admin-ecmp-spring-boot-starter:$ecmp_version")
+
+    // 测试依赖
+    testCompile(
+            "org.springframework.boot:spring-boot-starter-test"
+    )
+}

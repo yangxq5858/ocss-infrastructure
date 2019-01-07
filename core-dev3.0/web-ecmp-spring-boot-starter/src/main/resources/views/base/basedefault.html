@@ -1,0 +1,58 @@
+<div xmlns:th="http://www.thymeleaf.org" th:fragment="base_head">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <!-- content的取值为webkit,ie-comp,ie-stand之一，区分大小写，分别代表用webkit内核，IE兼容内核，IE标准内核 -->
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge chrome=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="icon" type="image/x-icon" href="/static/styles/images/logo.ico"
+          data-th-href="@{/static/styles/images/logo.ico}" >
+    <link rel="shortcut icon" type="image/x-icon" href="/static/styles/images/logo.ico"
+          data-th-href="@{/static/styles/images/logo.ico}" >
+    <link rel="stylesheet" type="text/css" href="http://10.4.68.45/eui/fonticon/css/ecmp-all-min.css"
+          data-th-href="${static_resource_url + '/eui/fonticon/css/ecmp-all-min.css'}">
+    <link rel="stylesheet" type="text/css" href="http://10.4.68.45/eui/jqgrid/css/jquery-ui.min.css"
+          data-th-href="${static_resource_url + '/eui/jqgrid/css/jquery-ui.min.css'}">
+    <link rel="stylesheet" type="text/css" href="http://10.4.68.45/eui/jqgrid/css/ui.jqgrid.min.css"
+          data-th-href="${static_resource_url + '/eui/jqgrid/css/ui.jqgrid.min.css'}">
+    <link rel="stylesheet" type="text/css" href="http://10.4.68.45/eui/eui.unmin.css"
+          data-th-href="${static_resource_url + '/eui/eui.unmin.css'}">
+
+    <script type="text/javascript" src="http://10.4.68.45/eui/jquery-1.8.min.js"
+            data-th-src="${static_resource_url + '/eui/jquery-1.8.min.js'}"></script>
+    <script type="text/javascript" src="http://10.4.68.45/eui/eui.unmin.js"
+            data-th-src="${static_resource_url + '/eui/eui.unmin.js'}"></script>
+    <script type="text/javascript" src="http://10.4.68.45/eui/eui_zh-cn.js"
+            data-th-src="${static_resource_url + '/eui/eui_zh-cn.js'}"></script>
+    <script type="text/javascript" src="http://10.4.68.45/eui/jqgrid/jquery.jqGrid.min.js"
+            data-th-src="${static_resource_url + '/eui/jqgrid/jquery.jqGrid.min.js'}"></script>
+
+    <script type="text/javascript">
+        var _ctxPath = "[[${#request.scheme}]]://[[${#request.serverName}]]:[[${#request.serverPort}]][[${#request.contextPath}]]";
+    </script>
+
+    <script type="application/javascript" th:inline="JavaScript">
+        var __SessionUser = [[${#session.getAttribute('_SessionUser')}]] || {};
+        var _FeatureMaps = [[${#request.getAttribute('_FeatureMaps')}]] || {};
+        EUI.checkAuth = function (code) {
+            if ('GlobalAdmin' === __SessionUser['authorityPolicy']) {
+                return true;
+            } else if ('TenantAdmin' === __SessionUser['authorityPolicy']) {
+                return true;
+            }
+            return !!_FeatureMaps[code];
+        };
+        EUI.onReady(function () {
+            $(document).bind("keypress", function (event) {
+                if (8 === event.keyCode) {
+                    if ("body" === event.target.tagName.toLowerCase()) {
+                        return false;
+                    }
+                }
+            });
+        });
+    </script>
+</div>

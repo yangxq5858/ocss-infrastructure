@@ -1,0 +1,9 @@
+# 自定义配置
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  com.ecmp.spring.boot.autoconfigure.WebEnvironmentPostProcessor
+
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.ecmp.spring.boot.autoconfigure.WebConfig,\
+  com.ecmp.spring.boot.autoconfigure.SessionConfig,\
+  com.ecmp.spring.boot.autoconfigure.WebSecurityCoreConfig

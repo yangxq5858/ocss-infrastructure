@@ -1,0 +1,8 @@
+# 自定义配置
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  com.ecmp.spring.boot.autoconfigure.AdminEnvironmentPostProcessor
+
+# Auto Configure
+#org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+#  com.ecmp.spring.boot.autoconfigure.AdminAutoConfiguration
+

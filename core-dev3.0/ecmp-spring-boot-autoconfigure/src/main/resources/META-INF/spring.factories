@@ -1,0 +1,9 @@
+# 自定义配置
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  com.ecmp.spring.boot.autoconfigure.GlobalEnvironmentPostProcessor
+
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.ecmp.spring.boot.autoconfigure.ECMPAutoConfiguration,\
+  com.ecmp.spring.boot.autoconfigure.ZipkinTracingConfiguration
+

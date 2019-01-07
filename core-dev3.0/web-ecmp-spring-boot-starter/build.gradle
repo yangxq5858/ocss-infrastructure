@@ -1,0 +1,104 @@
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+// java编译的时候缺省状态下会因为中文字符而失败
+[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+dependencies {
+    compile project(':core-entity')
+    compile project(':core-api')
+    compile project(':ecmp-spring-boot-autoconfigure')
+    compile project(':edm-ecmp-spring-boot-starter')
+
+    compile("org.springframework.boot:spring-boot-starter")
+    //Auto Configure
+    compile('org.springframework.boot:spring-boot-autoconfigure')
+
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-web')
+
+    compile("org.springframework.boot:spring-boot-starter-data-redis") { exclude group: 'io.lettuce' }
+    compile('org.springframework.session:spring-session-core')
+    compile('org.springframework.session:spring-session-data-redis')
+    compile('redis.clients:jedis:2.9.0')
+
+    compile(
+            "commons-fileupload:commons-fileupload:$commons_fileupload_version",
+
+            "fr.opensagres.xdocreport:org.apache.poi.xwpf.converter.pdf:1.0.6",
+            "org.apache.poi:poi:3.15",
+            "org.apache.poi:poi-scratchpad:3.15",
+
+            //easypoi
+            "cn.afterturn:easypoi-base:3.+",
+            "cn.afterturn:easypoi-web:3.+",
+            "cn.afterturn:easypoi-annotation:3.+"
+    )
+
+    //security
+    compile(
+            "org.springframework.boot:spring-boot-starter-security",
+            "org.springframework.boot:spring-boot-starter-data-redis",
+            "org.springframework.security:spring-security-jwt:$spring_security_jwt_version"
+    )
+
+    //social 第三方登录集成
+    compile(
+            "org.springframework.social:spring-social-config:$spring_social_version",
+            "org.springframework.social:spring-social-security:$spring_social_version"
+    )
+
+    // 测试
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.security:spring-security-test')
+}
+
+jar {
+    manifest {
+        attributes("Manifest-Version": "1.0")
+        attributes("Created-By": "Gradle")
+        attributes("Implementation-Title": "ECMP-$project.name")
+        attributes("Implementation-Version": "$project.version")
+        attributes("Build-Time": new Date().format("yyyy-MM-dd HH:mm:ss"))
+    }
+    //这里一定得要。在多模块下，不然编译失败，因为不会把信赖模块给打包。
+    enabled = true
+}
+
+/////////////////////////////////////上传Maven仓库////////////////////////////////////////
+//打包源代码
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+//如果希望gradle install，安装到.m2本地仓库，参考下面的内容
+install {
+    repositories.mavenInstaller {
+        pom.version = "$project.version"
+        pom.artifactId = "$project.name"
+        pom.groupId = "$project.group"
+    }
+}
+
+//上传到nexus
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: MAVEN_REPO_URL) {
+                authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
+            }
+            pom.version = "$project.version"
+            pom.artifactId = "$project.name"
+            pom.groupId = "$project.group"
+        }
+    }
+    return 'Success'
+}
+
+// gradle upload

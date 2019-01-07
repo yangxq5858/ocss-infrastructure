@@ -1,0 +1,5 @@
+rootProject.name = 'ecmp-notify'
+include 'notify-entity'
+include 'notify-api'
+include 'notify-service'
+

@@ -1,0 +1,20 @@
+${AnsiColor.MAGENTA}
+          EEEEEEEEEEEEEEEEEEEEEE       CCCCCCCCCCCCCMMMMMMMM               MMMMMMMMPPPPPPPPPPPPPPPPP
+          E::::::::::::::::::::E    CCC::::::::::::CM:::::::M             M:::::::MP::::::::::::::::P
+          E::::::::::::::::::::E  CC:::::::::::::::CM::::::::M           M::::::::MP::::::PPPPPP:::::P
+          EE::::::EEEEEEEEE::::E C:::::CCCCCCCC::::CM:::::::::M         M:::::::::MPP:::::P     P:::::P
+            E:::::E       EEEEEEC:::::C       CCCCCCM::::::::::M       M::::::::::M  P::::P     P:::::P
+            E:::::E            C:::::C              M:::::::::::M     M:::::::::::M  P::::P     P:::::P
+            E::::::EEEEEEEEEE  C:::::C              M:::::::M::::M   M::::M:::::::M  P::::PPPPPP:::::P
+            E:::::::::::::::E  C:::::C              M::::::M M::::M M::::M M::::::M  P:::::::::::::PP
+            E:::::::::::::::E  C:::::C              M::::::M  M::::M::::M  M::::::M  P::::PPPPPPPPP
+            E::::::EEEEEEEEEE  C:::::C              M::::::M   M:::::::M   M::::::M  P::::P
+            E:::::E            C:::::C              M::::::M    M:::::M    M::::::M  P::::P
+            E:::::E       EEEEEEC:::::C       CCCCCCM::::::M     MMMMM     M::::::M  P::::P
+          EE::::::EEEEEEEE:::::E C:::::CCCCCCCC::::CM::::::M               M::::::MPP::::::PP
+          E::::::::::::::::::::E  CC:::::::::::::::CM::::::M               M::::::MP::::::::P
+          E::::::::::::::::::::E    CCC::::::::::::CM::::::M               M::::::MP::::::::P
+          EEEEEEEEEEEEEEEEEEEEEE       CCCCCCCCCCCCCMMMMMMMM               MMMMMMMMPPPPPPPPPP
+${AnsiColor.BRIGHT_MAGENTA}
+::: Project (${appCode}:${envCode}) :::   ＼(^O^)／   ::: ECMP ${ecmp-version}   Spring-Boot ${spring-boot.version}
+${AnsiColor.BLUE}

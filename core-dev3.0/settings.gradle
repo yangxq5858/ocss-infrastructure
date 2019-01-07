@@ -1,0 +1,24 @@
+rootProject.name = 'ecmp-spring-boot'
+
+include 'core-api'
+include 'core-entity'
+include 'ecmp-context'
+include 'ecmp-api-swagger'
+include 'ecmp-spring-boot-autoconfigure'
+
+include 'edm-ecmp-spring-boot-starter'
+include 'jpa-ecmp-spring-boot-starter'
+include 'log-ecmp-spring-boot-starter'
+include 'cxf-ecmp-spring-boot-starter'
+include 'kafka-ecmp-spring-boot-starter'
+
+include 'service-ecmp-spring-boot-starter'
+include 'cxf-service-ecmp-spring-boot-starter'
+include 'web-ecmp-spring-boot-starter'
+
+include 'admin-ecmp-spring-boot-starter'
+
+//测试模块
+//include 'test-api-ecmp-spring-boot-starter'
+//include 'test-web-ecmp-spring-boot-starter'
+

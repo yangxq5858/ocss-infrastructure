@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<title>500 - 页面错误</title>
+</head>
+
+<body>
+<!--<div th:text="${className}">className</div>-->
+<!--<div th:text="${methodName}">methodName</div>-->
+<div><span style="font-size: larger">requestUrl: </span><span th:text="${requestUrl}">requestUrl</span></div>
+<div>methodName: <span th:text="${requestData}">methodName</span></div>
+<div>message<span th:text="${message}">message</span></div>
+<!--<div th:text="${stackTrace}">stackTrace</div>-->
+
+</body>
+</html>
